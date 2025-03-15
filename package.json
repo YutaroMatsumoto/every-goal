@@ -42,6 +42,7 @@
     "vitest": "^3.0.8"
   },
   "dependencies": {
-    "@inlang/paraglide-sveltekit": "^0.15.5"
+    "@inlang/paraglide-sveltekit": "^0.15.5",
+    "@supabase/supabase-js": "^2.49.1"
   }
 }
