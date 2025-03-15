@@ -1,9 +1,35 @@
 ---
-description:
-globs:
+description: フロントエンドのコーディングルール
+globs: 
 ---
+## ディレクトリ構造について
+src配下は以下の
+.
+├── database.ts
+├── lib
+│   └── model
+│   └── globalStates
+│   └── usecases
+│   └── components
+│       └── models
+│       └── ui
+├── routes
+│   └── api
+└── usecases
 
-# Your rule content
+- lib/components：見た目を作るコンポーネントは全てここに配置
+- lib/components/ui：ドメイン知識を持たないコンポーネント（Button, iconなど）。ここからlib/components/modelのコンポーネントを利用することはない。
+- lib/components/model：ドメイン知識を持つコンポーネント（目標や目標に対する評価など）。lib/components/uiのコンポーネントを利用。
+- lib/globalStates：Globalな状態管理をする担う。基本的にはページを跨いで状態を保持したい時に利用。
+- lib/models：主にオブジェクトの型定義をする場所。また、zodを利用してschemaを定義する。
+- usecases：ユーザーのユースケースを満たすための関数。基本的にここからroutes/apiの処理を呼び出す。
+- routes: sveltekitのroutes
+- routes/api：実際にsupabase側との通信を担う場所。ここ以外にもroutes下の+*.server.tsファイルは同様の役割を持つ。
+- database.ts：supabase側のdatabase schemaから自動生成した型。
 
-- You can @ files here
-- You can use markdown but dont have to
+
+## 主に利用する技術
+- フロントエンドのフレームワーク：svelte, sveltekit
+- form系：sveltekit-superforms, zod
+- lint, formatter：biome
+- DB等：supabase
