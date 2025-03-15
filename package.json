@@ -43,6 +43,8 @@
   },
   "dependencies": {
     "@inlang/paraglide-sveltekit": "^0.15.5",
-    "@supabase/supabase-js": "^2.49.1"
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.49.1",
+    "tailwind-variants": "^1.0.0"
   }
 }
