@@ -30,6 +30,7 @@ src配下は以下の
 
 ## 主に利用する技術
 - フロントエンドのフレームワーク：svelte, sveltekit
+  - svelte5を利用すること
 - form系：sveltekit-superforms, zod
 - lint, formatter：biome
 - DB等：supabase
