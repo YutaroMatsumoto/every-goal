@@ -13,7 +13,6 @@
 	const modal = createModal
 
 	// $inspect({session})
-	$effect(() => console.log({session}))
 </script>
 
 <header>
