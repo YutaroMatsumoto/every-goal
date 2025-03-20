@@ -3,12 +3,13 @@
   import LogoutButton from '$lib/components/ui/_button/LogoutButton/LogoutButton.svelte';
   import MenuPanel from '$lib/components/ui/MenuPanel/MenuPanel.svelte';
 
-	export let onClose: () => void
+  let { onClose } = $props<{ onClose: () => void }>();
+
 </script>
 
 <MenuPanel {onClose}>
 	{#each userMenu as userMenuItem}
-		<a class="flex w-full p-2 hover:bg-white" href={userMenuItem.href} on:click={onClose}>
+		<a class="flex w-full p-2 hover:bg-white" href={userMenuItem.href} onclick={onClose}>
 			{userMenuItem.title}
 		</a>
 	{/each}

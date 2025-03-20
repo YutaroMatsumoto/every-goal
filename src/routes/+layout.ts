@@ -1,3 +1,4 @@
+import { redirect } from '@sveltejs/kit';
 import {
   createBrowserClient,
   createServerClient,
@@ -8,8 +9,10 @@ import {
   PUBLIC_SUPABASE_URL,
 } from "$env/static/public";
 import type { LayoutLoad } from "./$types";
+import { pathName, PUBLIC_PATHS } from '$lib/const/route';
+// 認証が不要なパス一覧
 
-export const load: LayoutLoad = async ({ data, depends, fetch }) => {
+export const load: LayoutLoad = async ({ data, url, depends, fetch }) => {
   /**
    * Declare a dependency so the layout can be invalidated, for example, on
    * session refresh.
@@ -42,10 +45,17 @@ export const load: LayoutLoad = async ({ data, depends, fetch }) => {
     data: { session },
   } = await supabase.auth.getSession();
 
+  // 現在のパスを取得
+  const path = url.pathname;
+
+   // 認証が必要なパスで、セッションがない場合はログインページにリダイレクト
+  if (!session && !PUBLIC_PATHS.some(publicPath => path.startsWith(publicPath))) {
+    throw redirect(307, pathName.login);
+  }
+
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  console.log("layout.ts",{ auth: supabase.auth, session })
 
   return { session, supabase, user };
 };

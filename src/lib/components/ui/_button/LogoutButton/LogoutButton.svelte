@@ -1,21 +1,28 @@
 <!-- このコンポーネントは例外としてstyleについての関心はもたない -->
 <script lang="ts">
-  import { getSupabase, type Supabase } from "$lib/globalState/supabase.svelte";
+  import { getSession } from "$lib/globalState/session.svelte";
+  import { getSupabase } from "$lib/globalState/supabase.svelte";
+  import { handleSignOut } from "$lib/usecase/auth";
 
+  let { onClose = undefined } = $props<{
+    onClose?: (() => void) | undefined
+  }>();
 
-	export let onClose: (() => void) | undefined = undefined
+  const supabase = getSupabase();
+  const session = getSession();
 
-	const supabase = getSupabase()
-
-	const onClick = () => {
-		onClose && onClose()
-		handleSignOut($supabase)
-	}
-
-
-  function handleSignOut($supabase: Supabase) {
-    throw new Error("Function not implemented.");
+  function onClick() {
+    onClose && onClose();
+    handleSignOut($supabase);
   }
+
+	$effect(() => console.log({ supabase, session }))
+	$inspect({ supabase, session })
 </script>
 
-<button on:click={onClick} class="flex w-full p-2 hover:bg-white cursor-pointer">ログアウト</button>
+<button 
+  onclick={onClick} 
+  class="flex w-full p-2 hover:bg-white cursor-pointer text-red-700"
+>
+  ログアウト
+</button>

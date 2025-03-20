@@ -1,9 +1,16 @@
 <script lang="ts">
-	import Header from '$lib/components/ui/_layout/Header.svelte';
   import type { Session } from "@supabase/supabase-js";
   import type { Snippet } from "svelte";
+	import Header from '$lib/components/ui/_layout/Header.svelte';
+  import { setSession } from "$lib/globalState/session.svelte";
+  import { setSupabase, type Supabase } from '$lib/globalState/supabase.svelte';
   
-	const { session, children } : { session: Session | null; children: Snippet; } = $props()
+	const { session, supabase, children } : { session: Session | null; supabase: Supabase; children: Snippet; } = $props()
+  $effect(() => {
+		console.log("Layout.svelte",{session})
+		setSession(session)
+		setSupabase(supabase)
+	})
 </script>
 
 <div>
