@@ -10,7 +10,6 @@ import {
 } from "$env/static/public";
 import type { LayoutLoad } from "./$types";
 import { pathName, PUBLIC_PATHS } from '$lib/const/route';
-// 認証が不要なパス一覧
 
 export const load: LayoutLoad = async ({ data, url, depends, fetch }) => {
   /**
@@ -53,9 +52,12 @@ export const load: LayoutLoad = async ({ data, url, depends, fetch }) => {
     throw redirect(307, pathName.login);
   }
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // TODO: DBからユーザー情報を取得
+  // const {
+  //   data: { user },
+  // } = await supabase.auth.getUser();
+	// const user = await supabase.from('users').select('*').eq('id', session?.user.id)
+  // console.log({session, userid: session?.user.id, user})
 
-  return { session, supabase, user };
+  return { session, supabase };
 };

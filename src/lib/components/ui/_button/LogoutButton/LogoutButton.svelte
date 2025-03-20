@@ -17,7 +17,6 @@
   }
 
 	$effect(() => console.log({ supabase, session }))
-	$inspect({ supabase, session })
 </script>
 
 <button 
