@@ -4,7 +4,7 @@
 import { tv } from "tailwind-variants";
 
 export const primaryButton = tv({
-  base: "inline-flex border-none rounded-sm text-white font-bold bg-green-500",
+  base: "inline-flex border-none rounded-4xl text-white font-bold bg-blue-500",
   variants: {
     size: {
       sm: "h-7 px-2 py-1 text-xs",
