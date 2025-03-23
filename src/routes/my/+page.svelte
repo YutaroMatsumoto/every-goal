@@ -1,4 +1,5 @@
 <script lang="ts">
+  import PrimaryButton from '$lib/components/ui/_button/PrimaryButton/PrimaryButton.svelte';
   import TextInput from '$lib/components/ui/_form/TextInput.svelte';
 	import { writable } from 'svelte/store';
 
@@ -41,12 +42,7 @@
 			placeholder="読書1分"
 			keydownFunction={addGoal}
 		/>
-		<button
-			onclick={addGoal}
-			class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-		>
-			追加
-		</button>
+		<PrimaryButton onclick={addGoal} >追加</PrimaryButton>
 	</div>
 
 	{#each $goals as goal (goal.id)}
