@@ -8,7 +8,7 @@
 	let {loading = false, size = "lg", disabled = false, onclick, children, ...rest}: PrimaryButtonProps = $props()
 </script>
 
-<button class={primaryButton({ size, disabled })} {onclick} {...rest}>
+<button class={primaryButton({ size, disabled, class: "w-20" })} {onclick} {...rest}>
 	{#if loading}
 		<Loading />
 	{:else}
