@@ -9,7 +9,6 @@ import {
   PUBLIC_SUPABASE_URL,
 } from "$env/static/public";
 import type { LayoutLoad } from "./$types";
-import { pathName, PUBLIC_PATHS } from '$lib/const/route';
 
 export const load: LayoutLoad = async ({ data, url, depends, fetch }) => {
   /**
@@ -43,14 +42,6 @@ export const load: LayoutLoad = async ({ data, url, depends, fetch }) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
-
-  // 現在のパスを取得
-  const path = url.pathname;
-
-   // 認証が必要なパスで、セッションがない場合はログインページにリダイレクト
-  if (!session && !PUBLIC_PATHS.some(publicPath => path.startsWith(publicPath))) {
-    throw redirect(307, pathName.login);
-  }
 
   // TODO: DBからユーザー情報を取得
   // const {
