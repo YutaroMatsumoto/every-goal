@@ -1,5 +1,5 @@
 import { tv } from "tailwind-variants"
-import { IconSearch, IconCameraFilled, IconSend2, IconX, IconMenu2, IconArrowLeft, IconEyeFilled } from "@tabler/icons-svelte";
+import { IconSearch, IconCameraFilled, IconSend2, IconX, IconMenu2, IconArrowLeft, IconEyeFilled, IconChevronLeft, IconChevronRight } from "@tabler/icons-svelte";
 import ClockHour_4 from "@tabler/icons-svelte/icons/clock-hour-4";
 
 export type IconSizeType = "sm" | "md" | "lg"
@@ -30,6 +30,8 @@ export const Icon = {
   close: IconX,
   menu: IconMenu2,
   arrowLeft: IconArrowLeft,
+  chevronLeft: IconChevronLeft,
+  chevronRight: IconChevronRight,
   eye: IconEyeFilled
 } as const;
 
