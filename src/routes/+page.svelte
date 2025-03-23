@@ -1,4 +1,5 @@
 <script lang="ts">
+  import TextInput from '$lib/components/ui/TextInput/TextInput.svelte';
 	import { writable } from 'svelte/store';
 
 	type Goal = {
@@ -12,7 +13,7 @@
 		{ id: 2, text: '本を1章読む', rating: 0 }
 	]);
 
-	let newGoalText = '';
+	let newGoalText = $state('');
 
 	function addGoal() {
 		if (newGoalText.trim()) {
@@ -34,15 +35,13 @@
 
 <div class="max-w-2xl mx-auto p-6">
 	<div class="flex gap-2 mb-8">
-		<input
-			type="text"
+		<TextInput
 			bind:value={newGoalText}
-			placeholder="今日の目標を入力"
-			class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-			on:keydown={(e) => e.key === 'Enter' && addGoal()}
+			placeholder="読書1分"
+			keydownFunction={addGoal}
 		/>
 		<button
-			on:click={addGoal}
+			onclick={addGoal}
 			class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
 		>
 			追加
@@ -57,7 +56,7 @@
 					{#each Array(5) as _, i}
 						<button
 							class="text-2xl"
-							on:click={() => updateRating(goal.id, i + 1)}
+							onclick={() => updateRating(goal.id, i + 1)}
 						>
 							{#if i < goal.rating}
 								<span class="text-yellow-400">★</span>
