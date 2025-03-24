@@ -17,6 +17,7 @@ export const icon = tv({
       primary: "text-blue-600", // 仮
       // secondary:
       primaryLight: "text-blue-300",
+      white: "text-white",
       disabled: "text-gray-400"
     },
   },
