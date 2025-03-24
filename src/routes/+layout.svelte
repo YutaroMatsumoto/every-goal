@@ -5,6 +5,7 @@
 	import '../app.css';
   import { onMount } from "svelte";
   import { invalidate } from "$app/navigation";
+  import DateSelector from "$lib/components/ui/_form/DateSelector.svelte";
 	
 	let { data, children } = $props()
   let { session, supabase } = $derived(data)
@@ -22,6 +23,7 @@
 
 <ParaglideJS {i18n}>
 	<Layout {session} {supabase}>
+	  <DateSelector />
 		{@render children()}
 	</Layout>
 </ParaglideJS>
