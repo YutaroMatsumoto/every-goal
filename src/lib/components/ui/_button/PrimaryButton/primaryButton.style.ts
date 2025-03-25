@@ -12,7 +12,7 @@ export const primaryButton = tv({
     },
     disabled: {
       true: "opacity-50 cursor-not-allowed",
-      false: "cursor-pointer hover:bg-green-600",
+      false: "cursor-pointer hover:bg-blue-600",
     },
   },
   defaultVariants: {
