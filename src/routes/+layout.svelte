@@ -23,7 +23,6 @@
 
 <ParaglideJS {i18n}>
 	<Layout {session} {supabase}>
-	  <DateSelector />
 		{@render children()}
 	</Layout>
 </ParaglideJS>
